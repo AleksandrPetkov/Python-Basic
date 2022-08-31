@@ -1,13 +1,18 @@
-list1 = ["a", "3.5"]
-print("List1 before add 'c':",  list1)
-list1.insert(1, 'c')
-print("List1 after add 'c':", list1)
-list1.remove("c")
-print("List1 before replace 'a' and '3.5'", list1)
-list1.reverse()
-print("List1 after replace 'a' and '3.5'", list1)
-list2 = [5, 9]
-print("List2 before math changes:", list2)
-for i in range(len(list2)):
-    list2[i] += 3
-    print("List2 after math changes:", list2)
+c, d = 1, 2.35
+print("Before changes 1:", c, ",", d)
+s = c
+c = d
+d = s
+print("After changes 1:", c, ",", d)
+
+a, b = 'c', 3
+print("Before changes 2:", a, ",", b)
+a, b = b, a
+print("After changes 2:", a, ",", b)
+
+e, f = 23, 48
+print("Before changes 3:", e, ",", f)
+e = e + f
+f = e - f
+e = e - f
+print("After changes 3:", e, ",", f)

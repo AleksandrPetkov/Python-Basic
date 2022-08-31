@@ -2,7 +2,9 @@ print("Write the number:")
 a = input()
 print("The first variant:", sum(map(int, str(a))))
 
-b = int(a[0])
-c = int(a[1])
-d = int(a[2])
-print("The second variant:", b+c+d)
+print("Write another number:")
+b = int(input())
+c = b % 10
+d = (b % 100)//10
+e = b // 100
+print("The second variant:", c+d+e)
