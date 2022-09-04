@@ -4,8 +4,8 @@ import math
 def cone_s_v():
     a = float(input('Enter the value for cone radius: '))
     b = float(input('Enter the value for cone height: '))
-    cone_sq = math.pi*a*math.sqrt(a**2+b**2)
-    cone_vol = 1/3*math.pi*(a**2)*b
+    cone_sq = math.pi * a * math.sqrt(a**2 + b**2)
+    cone_vol = 1/3 * math.pi * (a**2) * b
     return cone_sq, cone_vol
 
 
