@@ -1,6 +1,5 @@
 def my_sum(*a, start=0):
-    b = sum(*a) + start
-    return b
+    return sum(a, start)
 
 
-print(my_sum((1, 2, 3)))
+print(my_sum(1, 2, 3, 4))
