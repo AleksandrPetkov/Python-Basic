@@ -1,5 +1,5 @@
-cell_one = 'd3'
-cell_two = 'g7'
+cell_one = input('Please enter the first cell, for example"d3": ')
+cell_two = input('Please enter the first cell, for example"g7": ')
 cells = cell_one + cell_two
 x1, x2 = map(ord, cells[0::2])
 y1, y2 = map(int, cells[1::2])

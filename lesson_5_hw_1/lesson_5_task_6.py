@@ -12,7 +12,7 @@ def main():
     print('The 20th number in fibonacchi line is', res)
 
 
-def test_is_even():
+def test_fibonacci():
     assert fibonacci(1) == 0, 'the 1st number of fibonacci sequence is 0'
     assert fibonacci(2) == 1, 'the 2nd number of fibonacci sequence is 1'
     assert fibonacci(5) == 3, 'the 5th number of fibonacci sequence is 3'
@@ -20,5 +20,5 @@ def test_is_even():
     assert fibonacci(15) == 377, 'the 15th number of fibonacci sequence is 377'
 
 
-test_is_even()
+test_fibonacci()
 main()
