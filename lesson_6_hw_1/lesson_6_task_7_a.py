@@ -11,11 +11,17 @@ while True:
         if choice == 'n':
             print('Goodbye!')
             break
-        if choice == 'y':
+        elif choice != 'n' and choice != 'y':
+            print('You enter the wrong answer!')
+            continue
+        else:
             choice_2 = input('Do you want continue to guess or computer can try to guess your number,'
                              'enter "i" - you want to continue, "c" - computer try to guess:')
             if choice_2 == 'i':
                 user_number = int(input('Please enter your number from 1 to 10: '))
+                continue
+            elif choice_2 != 'i' and choice_2 != 'c':
+                print('You enter the wrong answer!')
                 continue
             else:
                 comp_number = random.randint(1, 10)
@@ -33,7 +39,10 @@ while True:
                         user_answer_2 = input('Is your number less or bigger than mine, enter less/bigger:')
                         if user_answer_2 == 'bigger':
                             low = mid + 1
-                        if user_answer_2 == 'less':
+                        elif user_answer_2 != 'bigger' and user_answer_2 != 'less':
+                            print('You enter the wrong answer!')
+                            continue
+                        else:
                             high = mid - 1
                         mid = (low + high) // 2
                         if low > high:
