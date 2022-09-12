@@ -2,7 +2,7 @@ import random
 
 user_number = int(input('Please enter your number from 1 to 10: '))
 while True:
-    hidden_number = random.randint(1, 3)
+    hidden_number = random.randint(1, 10)
     if user_number == hidden_number:
         print('Congratulations, you guessed the number!!!')
         break
