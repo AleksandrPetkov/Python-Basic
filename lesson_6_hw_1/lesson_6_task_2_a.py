@@ -18,7 +18,6 @@ def diff_min_max_2(arg):
     for item in arg:
         if min_1 is None or item < min_1:
             min_1 = item
-    for item in arg:
         if max_1 is None or item > max_1:
             max_1 = item
     sub_numbers_2 = max_1 - min_1

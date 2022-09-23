@@ -8,13 +8,10 @@ import random
 
 def get_max_digit(arg):
     max_number_var_1 = int(max(str(arg)))
-    b = arg
-    max_number_var_2 = b % 10
-    b = b//10
-    while b > 0:
-        if b % 10 > max_number_var_2:
-            max_number_var_2 = b % 10
-        b = b // 10
+    max_number_var_2 = 0
+    while arg:
+        arg, n = divmod(arg, 10)
+        max_number_var_2 = max(max_number_var_2, n)
     return max_number_var_1, max_number_var_2
 
 
