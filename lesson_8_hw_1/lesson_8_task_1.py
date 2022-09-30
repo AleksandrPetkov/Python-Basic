@@ -5,9 +5,9 @@ if element isn`t in list.
 
 
 def index(lst, elem):
-    for ind, num in enumerate(lst):
+    for idx, num in enumerate(lst):
         if num == elem:
-            return ind
+            return idx
 
 
 def test_index():
@@ -21,6 +21,6 @@ def main():
     print(index([2, 'e', 3, 7, 'k'], 'k'))
 
 
-test_index()
-main()
-
+if __name__ == "__main__":
+    test_index()
+    main()

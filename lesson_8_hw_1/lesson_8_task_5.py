@@ -1,8 +1,3 @@
-"""
-Function 'gen_primes' output all prime numbers from 1 to 100.
-"""
-
-
 def gen_primes():
     numbers = []
     for i in range(1, 100):
@@ -17,8 +12,22 @@ def gen_primes():
     return numbers
 
 
-def main():
-    print('Prime numbers from 1 to 100 are: ', gen_primes())
+def gen_primes_eratosfen(number):
+    prime = [True for i in range(number+1)]
+    prime_n = []
+    p = 2
+    while p * p <= number:
+        if prime[p] is True:
+            for i in range(p * p, number+1, p):
+                prime[i] = False
+        p += 1
+    for p in range(2, number+1):
+        if prime[p]:
+            prime_n.append(p)
+    return prime_n
 
 
-main()
+if __name__ == '__main__':
+    num = 100000
+    print(f'Prime numbers from 1 to {num} are: ', gen_primes_eratosfen(num))
+    print(f'Prime numbers from 1 to {num} using sieve of eratosthenes are: ', gen_primes_eratosfen(num))
