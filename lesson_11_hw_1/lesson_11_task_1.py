@@ -11,7 +11,7 @@ def expected(*expected_types):
         def wrapper(*args, **kwargs):
             func_result = func(*args, **kwargs)
             if not isinstance(func_result, expected_types):
-                raise UnexpectedTypeException('Was expecting types: str, ing')
+                raise UnexpectedTypeException('Was expecting types: str, int')
             else:
                 print(func(*args, **kwargs))
         return wrapper
