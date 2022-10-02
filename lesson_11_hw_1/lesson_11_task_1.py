@@ -1,33 +1,28 @@
 from functools import wraps
 
 
-class Error(Exception):
+class UnexpectedTypeException(Exception):
     pass
 
 
-class UnexpectedTypeException(Error):
-    pass
+def expected(*expected_types):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            func_result = func(*args, **kwargs)
+            if not isinstance(func_result, expected_types):
+                raise UnexpectedTypeException('Was expecting types: str, ing')
+            else:
+                print(func(*args, **kwargs))
+        return wrapper
+    return decorator
 
 
-def expected(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        argtypes = (int, str)
-        if type(func) in argtypes:
-            func(*args, **kwargs)
-        else:
-            try:
-                argtypes = (int, str)
-                if type(func) not in list(argtypes):
-                    raise UnexpectedTypeException
-            except UnexpectedTypeException:
-                print('Was expecting types: str, ing')
-    return wrapper
-
-
-@expected
-def add(value):
+@expected(int, str)
+def my_func(value):
     return value
 
 
-print(add(2))
+my_func(2.5)  #error
+
+
