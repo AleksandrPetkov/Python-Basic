@@ -2,12 +2,10 @@ from collections.abc import Iterable
 import itertools
 
 
-class Error(Exception):
+class UnexpectedTypeException(Exception):
     pass
 
 
-class UnexpectedTypeException(Error):
-    pass
 """
 Function "lchain" takes many iterables objects and return the list with elements of all objects from function argument,
 using isinstansee() function and class Iterable from collections.abc
@@ -21,12 +19,7 @@ def lchain(*iterables):
             for part in elem:
                 result.append(part)
         else:
-            try:
-                for elem in iterables:
-                    if elem is not Iterable:
-                        raise UnexpectedTypeException
-            except UnexpectedTypeException:
-                print('Input parameters must all be iterable')
+            raise UnexpectedTypeException('Input parameters must all be iterable')
     return result
 
 
@@ -46,8 +39,8 @@ def test_lchain():
 
 
 def main():
-   print(lchain([1, 2, 3], {'5': 5}, tuple(), (6, 7), range(8, 10)))
-   print(lchain_2([1, 2, 3], {'5': 5}, tuple(), (6, 7), range(8, 10)))
+    print(lchain([1, 2, 3], {'5': 5}, tuple(), (6, 7), range(8, 10)))
+    print(lchain_2([1, 2, 3], {'5': 5}, tuple(), (6, 7), range(8, 10)))
 
 
 if __name__ == '__main__':
