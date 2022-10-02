@@ -8,16 +8,19 @@ def group_by_surname(list_of_enrollees):
     group_j_p = []
     group_q_t = []
     group_u_z = []
-    for elem in list_of_enrollees:
-        name_surname = elem.split()
-        if ord(name_surname[1][0]) in range(ord('A'), ord('I')+1):
+    index = 0
+    while index < len(list_of_enrollees):
+        elem = list_of_enrollees[index]
+        name, surname = elem.split()
+        if 'A' <= surname[0] <= 'I':
             group_a_i.append(elem)
-        elif ord(name_surname[1][0]) in range(ord('J'), ord('P')+1):
+        elif 'J' <= surname[0] <= 'P':
             group_j_p.append(elem)
-        elif ord(name_surname[1][0]) in range(ord('Q'), ord('T')+1):
+        elif 'Q' <= surname[0] <= 'T':
             group_q_t.append(elem)
-        elif ord(name_surname[1][0]) in range(ord('U'), ord('Z')+1):
+        elif 'U' <= surname[0] <= 'Z':
             group_u_z.append(elem)
+        index += 1
     return len(group_a_i), len(group_j_p), len(group_q_t), len(group_u_z)
 
 

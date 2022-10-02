@@ -4,21 +4,16 @@ Function "copydeep" make a deep copy of list with another list, tuple or dict.
 
 
 def copydeep(arg):
-    list_copy_deep = []
-    for elem in arg:
-        if isinstance(elem, list):
-            list_copy_deep.append(copydeep(elem))
-        elif isinstance(elem, tuple):
-            tpl2 = tuple(copydeep(elem))
-            list_copy_deep.append(tpl2)
-        elif isinstance(elem, dict):
-            dict_1 = {}
-            for key in elem:
-                dict_1[key] = elem[key]
-            list_copy_deep.append(dict_1)
-        else:
-            list_copy_deep.append(elem)
-    return list_copy_deep
+    if isinstance(arg, list):
+        return list(map(copydeep, arg))
+    elif isinstance(arg, tuple):
+        return tuple(map(copydeep, arg))
+    elif isinstance(arg, dict):
+        return {
+            copydeep(key): copydeep(value)
+            for key, value in arg.items()
+        }
+    return arg
 
 lst_1 = ['a', 1, (2.0, 0, [75], {'a':2, 'b':1}), ['b'], {'a':2, 'b':1}]
 lst_2 = copydeep(lst_1)

@@ -1,5 +1,7 @@
 import pickle
 from statistics import mean
+from operator import itemgetter
+
 
 running = True
 
@@ -91,12 +93,15 @@ def find_entry_age_phonebook():
 
 #------------------------------------------------------------------------------
 def delete_entry_name_phonebook():
+    global phone_book
+    copy_phone_book = []
     name = str(input("    Enter name: "))
     idx = 1
     found = False
-    for i, entry in enumerate(phone_book):
-        if entry["name"] == name:
-            del phone_book[i]
+    for entry in phone_book:
+        if entry["name"] != name:
+            copy_phone_book.append(entry)
+            phone_book = copy_phone_book
             idx += 1
             found = True
             print(f'All entries with name {name}, was successful deleted.')
@@ -111,9 +116,9 @@ def count_all_entries_in_phonebook():
 
 #------------------------------------------------------------------------------
 def print_phonebook_by_age():
-    phone_book.sort(key=lambda dictionary: dictionary["age"])
+    sorted_phone_book = sorted(phone_book, key=itemgetter("age"))
     number = 1
-    for entry in phone_book:
+    for entry in sorted_phone_book:
         print_entry(number, entry)
         number += 1
 
@@ -127,7 +132,7 @@ def increase_age():
 
 
 #------------------------------------------------------------------------------
-def avr_age_of_all_persons():
+def print_avr_age():
     age_list = []
     for entry in phone_book:
         age_list.append(entry["age"])
@@ -222,7 +227,7 @@ def main():
                   '5':  find_entry_age_phonebook,
                   '6':  delete_entry_name_phonebook,
                   '7':  count_all_entries_in_phonebook,
-                  '8':  avr_age_of_all_persons,
+                  '8':  print_avr_age,
                   '9':  increase_age,
                   '10': change_surname_phonebook,
                   '11': find_entry_instagram_phonebook,
