@@ -5,8 +5,10 @@ Function 'surname()' open the .txt file with names, surnames and other informati
 
 def surname(file_name):
     with open(file_name) as file:
-        file_list = [line.strip('\n') for line in file.readlines()]
-        surnames_list = [elem.split('\t')[1] for elem in file_list]
+        surnames_list = []
+        for line in file.readlines():
+            splitted_line = line.split('\t')
+            surnames_list.append(splitted_line[1])
     return surnames_list
 
 

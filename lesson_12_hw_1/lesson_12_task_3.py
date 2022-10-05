@@ -8,31 +8,35 @@ and return list of dictionaries with original text date and modified date (dd/mm
 
 def authors(file_name):
     with open(file_name) as file:
-        file_list = [line.strip('\n') for line in file.readlines()]
-        info_list = [elem.split() for elem in file_list if len(elem.split()) > 1]
-        dates = [' '.join(elem[0:3]) for elem in info_list]
-        new_dates = [(parse(date)).strftime("%d/%m/%Y") for date in dates]
+        file_list = []
         dict_list = []
-        for orig_dates, modified_dates in zip(dates, new_dates):
-            date_dict = {'original_date': orig_dates, 'date_modified': modified_dates}
+        for line in file.readlines():
+            splitted_line = line.split()
+            if len(splitted_line) > 1:
+                file_list.append(splitted_line)
+        dates = [' '.join(elem[0:3]) for elem in file_list]
+        for old_dates in dates:
+            new_dates = (parse(old_dates)).strftime('%d/%m/%Y')
+            date_dict = {'original_date': old_dates, 'date_modified': new_dates}
             dict_list.append(date_dict)
     return dict_list
 
 
 def authors_v_2(file_name):
     with open(file_name) as file:
-        file_list = [line.strip('\n') for line in file.readlines()]
-        info_list = [elem.split() for elem in file_list if len(elem.split()) > 1]
-        dates = [' '.join(elem[0:3]) for elem in info_list]
-        new_dates = []
+        file_list = []
         dict_list = []
-        for elem in dates:
-            day, month, year = elem.split()
+        for line in file.readlines():
+            splitted_line = line.split()
+            if len(splitted_line) > 1:
+                file_list.append(splitted_line)
+        dates = [' '.join(elem[0:3]) for elem in file_list]
+        for old_dates in dates:
+            day, month, year = old_dates.split()
             day = day[:-2].rjust(2, '0')
             date_without_suffix = ' '.join([day, month, year])
-            new_dates.append(datetime.strptime(date_without_suffix, "%d %B %Y").strftime("%d/%m/%Y"))
-        for orig_dates, modified_dates in zip(dates, new_dates):
-            dict_list.append({'original_date': orig_dates, 'date_modified': modified_dates})
+            new_dates = datetime.strptime(date_without_suffix, '%d %B %Y').strftime('%d/%m/%Y')
+            dict_list.append({'original_date': old_dates, 'date_modified': new_dates})
     return dict_list
 
 
