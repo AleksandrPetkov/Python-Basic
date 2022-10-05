@@ -2,18 +2,13 @@
 Function 'surname()' open the .txt file with names, surnames and other information and return only surnames in list.
 """
 
-def surname(arg):
-    open_file = open(arg, 'r')
-    surname_list = []
-    for line in open_file:
-        splitted_line = line.split('\t')
-        surname_list.append(splitted_line[1])
-    return surname_list
 
-
-def main():
-    print(surname('names.txt'))
+def surname(file_name):
+    with open(file_name) as file:
+        file_list = [line.strip('\n') for line in file.readlines()]
+        surnames_list = [elem.split('\t')[1] for elem in file_list]
+    return surnames_list
 
 
 if __name__ == '__main__':
-    main()
+    print(surname('names.txt'))
