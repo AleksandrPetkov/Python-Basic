@@ -32,8 +32,7 @@ def authors_v_2(file_name):
             date_without_suffix = ' '.join([day, month, year])
             new_dates.append(datetime.strptime(date_without_suffix, "%d %B %Y").strftime("%d/%m/%Y"))
         for orig_dates, modified_dates in zip(dates, new_dates):
-            date_dict = {'original_date': orig_dates, 'date_modified': modified_dates}
-            dict_list.append(date_dict)
+            dict_list.append({'original_date': orig_dates, 'date_modified': modified_dates})
     return dict_list
 
 
