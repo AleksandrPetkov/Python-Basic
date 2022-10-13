@@ -29,3 +29,4 @@ if __name__ == '__main__':
     monster = Godzilla(100)
     monster.eat(85)
     monster.eat(6)
+
