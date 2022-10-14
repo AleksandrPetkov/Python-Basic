@@ -2,7 +2,6 @@
 This module is the solution for task 1 in lesson 14
 Classes: Godzilla
 """
-import copy
 
 
 class Godzilla:
@@ -14,19 +13,19 @@ class Godzilla:
         """Godzilla Class Constructor to initialize the object.
            Argument can be int or float."""
         self.stomach_volume = stomach_volume
-        self.copy_stomach_volume = copy.deepcopy(self.stomach_volume)
+        self.stomach_fullness = 0
+        self.eaten_up_msg = "Godzilla can't eat anymore"
 
     def eat(self, person_volume):
         """This method shows how Godzilla eating.
            Argument can be int or float"""
-        empty_stomach_part = 0.1 * self.copy_stomach_volume
-        self.stomach_volume -= person_volume
-        if self.stomach_volume < empty_stomach_part:
-            print('Godzilla can\'t eat anymore, it has eaten people')
+        if self.stomach_fullness <= 0.9 * self.stomach_volume:
+            self.stomach_fullness += person_volume
+        if self.stomach_fullness >= 0.9 * self.stomach_volume:
+            print(self.eaten_up_msg)
 
 
 if __name__ == '__main__':
     monster = Godzilla(100)
     monster.eat(85)
     monster.eat(6)
-
