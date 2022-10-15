@@ -18,14 +18,17 @@ class Godzilla:
     def eat(self, person_volume):
         """This method shows how Godzilla eating.
            Argument can be int or float"""
-        if self.stomach_fullness <= 0.9 * self.stomach_volume:
-            self.stomach_fullness += person_volume
-        if self.stomach_fullness > 0.9 * self.stomach_volume:
+        eating = self.stomach_fullness + person_volume
+        if eating > 0.9 * self.stomach_volume:
             print("Godzilla can't eat anymore")
+        else:
+            self.stomach_fullness += person_volume
 
 
 if __name__ == '__main__':
     monster = Godzilla(100)
-    monster.eat(85)
-    monster.eat(6)
+    monster.eat(120)
+    #monster.eat(6)
+    #monster.eat(100)
+
 
