@@ -25,16 +25,12 @@ class Godzilla:
         else:
             self.stomach_fullness += person_volume
 
-    def print_a(self):
-        print(self.stomach_fullness)
 
 if __name__ == '__main__':
     monster = Godzilla(100)
     monster.eat(120)
-    monster.print_a()
     monster.eat(6)
-    monster.print_a()
     monster.eat(100)
-    monster.print_a()
+
 
 
