@@ -20,7 +20,6 @@ class Godzilla:
            Argument can be int or float"""
         eating = self.stomach_fullness + person_volume
         if eating > 0.9 * self.stomach_volume:
-            self.stomach_fullness += person_volume - (eating - 0.9 * self.stomach_volume)
             print("Godzilla can't eat anymore")
         else:
             self.stomach_fullness += person_volume
