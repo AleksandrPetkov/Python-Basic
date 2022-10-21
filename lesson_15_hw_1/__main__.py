@@ -1,16 +1,15 @@
 """Settings to launch 'transport company' programm"""
 import sys
 from lesson_15_hw_1.classes.class_transport_programm import TransportCompany
-from lesson_15_hw_1.tests.test_vehicle import test_bus
-from lesson_15_hw_1.tests.test_vehicle import test_plain
-from lesson_15_hw_1.tests.test_vehicle import test_train
+from lesson_15_hw_1.tests.test_vehicle import Test
 
 
 def tests():
     """Test all classes used in the programm"""
-    test_bus()
-    test_train()
-    test_plain()
+    test = Test()
+    test.test_bus()
+    test.test_train()
+    test.test_plain()
 
 
 def main():
